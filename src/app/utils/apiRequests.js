@@ -39,6 +39,7 @@ export const getBlogDetails = async (id) => {
     return result.data;
   }
 };
+
 export const deleteBlog = async (id) => {
   const response = await fetch(`${process.env.API}/blog?id=${id}`, {
     method: "DELETE",

@@ -1,8 +1,10 @@
 "use client";
+
 import { useEffect } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { deleteBlog } from "../../utils/apiRequests";
+import Link from "next/link";
+
+import { deleteBlog } from "../app/utils/apiRequests";
 
 const BlogListComponent = ({ blog }) => {
   const router = useRouter();
@@ -27,11 +29,17 @@ const BlogListComponent = ({ blog }) => {
   };
 
   return (
-    <div className="border border-red-600 m-5">
+    <div className="border border-black-100 bg-gray-100 m-5 px-4 py-2">
       <div>{blog.title}</div>
       <div>{blog.description}</div>
-      <button onClick={() => deleteBlogItem(blog._id)}>Delete blog item</button>
-      <Link href={`/blog-list/${blog._id}`}>View blog details</Link>
+      <div className="flex mt-4 gap-3 text-sm">
+        <button className="btn" onClick={() => deleteBlogItem(blog._id)}>
+          Delete blog item
+        </button>
+        <Link className="btn" href={`/blogs/${blog._id}`}>
+          View blog details
+        </Link>
+      </div>
     </div>
   );
 };

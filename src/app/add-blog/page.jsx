@@ -1,32 +1,33 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { createBlog } from "../../../utils/apiRequests";
+import { createBlog } from "../utils/apiRequests";
 
 const initialFormData = {
   title: "",
   description: "",
 };
 
-const AddBlog = () => {
+export default function AddBlog() {
   const [blogFormData, setBlogFormData] = useState(initialFormData);
   const router = useRouter();
 
-  const handleSaveBlog = async () => {
+  const handleSaveBlog = async (e) => {
+    e.preventDefault();
     const data = await createBlog(blogFormData);
     if (data.success) {
-      router.push("/blog-list");
+      router.push("/blogs");
     } else {
       // error handling when posting new blog - validations
       alert(data.msg.message);
     }
   };
 
-  // TODO: add styles from bootstrap mui
   return (
-    <div>
-      <h1>Add new blog:</h1>
-      <div className="flex flex-col gap-4">
+    <div className="m-5">
+      <h1 className="text-xl my-6">Add new blog</h1>
+
+      <form onSubmit={handleSaveBlog}>
         <div className="flex flex-col gap-3">
           <label>Enter blog title:</label>
           <input
@@ -43,7 +44,7 @@ const AddBlog = () => {
           />
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 mt-6">
           <label>Enter blog description:</label>
           <textarea
             rows={5}
@@ -59,17 +60,13 @@ const AddBlog = () => {
             }
           />
         </div>
+
         <div>
-          <button
-            className="border border-black-500 p-4 bkg-black text-white"
-            onClick={handleSaveBlog}
-          >
+          <button type="submit" className="btn">
             Add block
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
-};
-
-export default AddBlog;
+}

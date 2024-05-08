@@ -1,14 +1,10 @@
-'use client';
-
-const error = ({ error, reset}) => {
-  return(
+const error = ({ error, reset }) => {
+  return (
     <div>
-      <h2>
-        Error! {error}
-      </h2>
-      <button onClick={() => reset()}>Try again</button>
+      <h2>Error!</h2>
+      <div>new error: {error}</div>
     </div>
-  )
+  );
 };
 
 export default error;

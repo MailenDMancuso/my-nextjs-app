@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Luckiest_Guy } from "next/font/google"; //fonts
-// import "./globals.css";
-import "bootstrap-material-design/dist/css/bootstrap-material-design.min.css";
+import "./globals.css";
 import TopNav from '@/components/TopNav';
 
 const inter = Inter({ subsets: ["latin"] });
@@ -14,7 +13,7 @@ const LuckiestGuyfont = Luckiest_Guy({
 });
 
 export const metadata: Metadata = {
-  title: "NextJS Blogs App",
+  title: "My NextJS Blogs App",
   description: "Testing app for learning purposes",
 };
 

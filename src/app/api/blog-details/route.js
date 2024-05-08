@@ -1,7 +1,7 @@
 // Requests to /api/blog-details
 
 import { NextResponse } from "next/server";
-import dbConnect from "../../../../utils/dbConnect";
+import dbConnect from "../../utils/dbConnect";
 import Blog from "../../../models/blog";
 
 export async function GET(req) {
